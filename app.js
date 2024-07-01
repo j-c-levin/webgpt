@@ -137,8 +137,5 @@ new Vue({
         renderMarkdown(content) {
             return marked.parse(content);
         }
-    },
-    updated() {
-        this.scrollToBottom();
     }
 });
