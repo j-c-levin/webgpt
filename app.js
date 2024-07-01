@@ -7,10 +7,8 @@ new Vue({
         selectedImage: null,
         apiTokenSaved: false
     },
-    computed: {
-        tokenSaved() {
-            return this.apiToken !== '';
-        }
+    created() {
+        this.apiTokenSaved = localStorage.getItem('apiToken') !== null;
     },
     methods: {
         clearLocalChat() {
