@@ -5,7 +5,12 @@ new Vue({
         userInput: '',
         conversationHistory: JSON.parse(localStorage.getItem('conversationHistory')) || [],
         selectedImage: null,
-        isLoading: false // Track loading state
+        apiTokenSaved: false
+    },
+    computed: {
+        tokenSaved() {
+            return this.apiToken !== '';
+        }
     },
     methods: {
         clearLocalChat() {
@@ -48,7 +53,9 @@ new Vue({
                             console.error('Error: Image upload unsuccessful.');
                         }
                     })
-                    .catch(error => console.log(error));
+                    .catch(error => {
+                        console.log(error);
+                    });
             } else {
                 this.proceedToSendMessage(messageContent);
             }
@@ -94,6 +101,11 @@ new Vue({
                         this.conversationHistory.push({ role: 'assistant', content: response });
                         this.saveConversationHistory();
                         this.scrollToBottom();
+                        this.apiTokenSaved = true;
+
+                        if (!this.tokenSaved()) {
+                            this.saveApiToken()
+                        }
                     }
                 })
                 .catch(error => {
