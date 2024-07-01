@@ -34,6 +34,7 @@
         <div class="fixed-input-bar">
             <label for="file-upload" class="file-upload-label">Choose File</label>
             <input type="file" id="file-upload" @change="uploadImage">
+            <img v-if="selectedImageDataUrl" :src="selectedImageDataUrl" class="thumbnail" alt="Image Preview">
             <textarea v-model="userInput" placeholder="Type your message here..."></textarea>
             <button @click="sendMessage">Send</button>
         </div>

@@ -5,6 +5,7 @@ new Vue({
         userInput: '',
         conversationHistory: JSON.parse(localStorage.getItem('conversationHistory')) || [],
         selectedImage: null,
+        selectedImageDataUrl: null,
         apiTokenSaved: false
     },
     created() {
@@ -20,6 +21,13 @@ new Vue({
         },
         uploadImage(event) {
             this.selectedImage = event.target.files[0];
+            if (this.selectedImage) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.selectedImageDataUrl = e.target.result;
+                };
+                reader.readAsDataURL(this.selectedImage);
+            }
         },
         sendMessage() {
             if (!this.apiToken) {
@@ -70,6 +78,7 @@ new Vue({
 
             this.userInput = '';
             this.selectedImage = null;
+            this.selectedImageDataUrl = null;
             this.sendRequest();
         },
         sendRequest() {

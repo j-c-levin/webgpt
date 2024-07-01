@@ -109,6 +109,13 @@ button.clear-button {
     margin-left: auto;
 }
 
+.thumbnail {
+    max-width: 100px; /* Adjust the size as needed */
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
 .assistant-message {
     background-color: #e9ecef; /* Light grey for assistant messages */
     align-self: flex-start;
