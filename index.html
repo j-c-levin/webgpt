@@ -10,7 +10,7 @@
 <div id="app">
     <div class="container">
         <h1>GPT Chat Interface</h1>
-        <label for="apiToken" v-if="!apiToken">Enter API Token:</label>
+        <label for="apiToken" v-if="!apiTokenSaved">Enter API Token:</label>
         <input type="text" id="apiToken" v-model="apiToken" @change="saveApiToken" placeholder="API Token" v-if="!apiTokenSaved">
         <button class="clear-button" @click="clearLocalChat">🗑️</button>
         <div class="conversation" ref="conversation">

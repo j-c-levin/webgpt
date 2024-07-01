@@ -103,7 +103,7 @@ new Vue({
                         this.scrollToBottom();
                         this.apiTokenSaved = true;
 
-                        if (!this.tokenSaved()) {
+                        if (!this.apiTokenSaved()) {
                             this.saveApiToken()
                         }
                     }

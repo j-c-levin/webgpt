@@ -98,18 +98,22 @@ button.clear-button {
     margin-bottom: 10px;
     max-width: 80%;
     word-wrap: break-word;
+    display: flex;
+    flex-direction: column; /* Ensure children align properly */
 }
 
 .user-message {
     background-color: #d1e7dd; /* Light green for user messages */
     align-self: flex-end;
     text-align: right;
+    margin-left: auto;
 }
 
 .assistant-message {
     background-color: #e9ecef; /* Light grey for assistant messages */
     align-self: flex-start;
     text-align: left;
+    margin-right: auto;
 }
 
 input[type="file"] {
@@ -156,4 +160,20 @@ input, textarea, .file-upload-label, button {
     to {
         transform: rotate(360deg);
     }
+}
+
+img {
+    max-width: 100%; /* Ensures the image does not exceed the width of its container */
+    height: auto;     /* Maintains aspect ratio */
+    border-radius: 5px; /* Optional: Adds a little rounding to the image corners for a nicer look */
+}
+
+/* Additional CSS to ensure containers behave as expected */
+.message img {
+    max-width: 80%;  /* Makes sure the image does not exceed the bubble width */
+}
+
+.container img {
+    display: block;  /* Ensures that images are block-level so they do not break the flow */
+    margin: 0 auto;  /* Centralizes the image within the container */
 }
