@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT Chat Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <h1>GPT Chat Interface</h1>
+        <label for="apiToken" v-if="!apiToken">Enter API Token:</label>
+        <input type="text" id="apiToken" v-model="apiToken" @change="saveApiToken" placeholder="API Token" v-if="!apiToken">
+        <button class="clear-button" @click="clearLocalChat">🗑️</button>
+        <div class="conversation" ref="conversation">
+            <template v-for="(message, index) in conversationHistory">
+                <div :key="index" class="message" :class="{'user-message': message.role === 'user', 'assistant-message': message.role === 'assistant'}">
+                    <div v-if="message.role === 'user'">
+                        <strong>User:</strong>
+                        <div v-for="(part, partIndex) in message.content" :key="partIndex">
+                            <p v-if="part.type === 'text'">{{ part.text }}</p>
+                            <img v-if="part.type === 'image_url'" :src="part.image_url.url" alt="User image">
+                        </div>
+                    </div>
+                    <div v-else>
+                        <strong>GPT:</strong>
+                        <div v-if="message.loading" class="spinner">&nbsp;</div>
+                        <p v-else v-html="renderMarkdown(message.content)"></p>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <div class="fixed-input-bar">
+            <label for="file-upload" class="file-upload-label">Choose File</label>
+            <input type="file" id="file-upload" @change="uploadImage">
+            <textarea v-model="userInput" placeholder="Type your message here..."></textarea>
+            <button @click="sendMessage">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
