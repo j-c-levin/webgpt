@@ -113,7 +113,7 @@ button.clear-button {
     max-width: 100px; /* Adjust the size as needed */
     height: auto;
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 0; /* Remove top margin */
 }
 
 .assistant-message {
@@ -134,15 +134,12 @@ input[type="file"] {
     border-radius: 5px;
     cursor: pointer;
     background-color: #f8f9fa;
-    margin-bottom: 10px;
+    margin-bottom: 0; /* Removed bottom margin */
+    margin-right: 10px; /* Space between the button and the thumbnail */
 }
 
 .file-upload-label:hover {
     background-color: #e2e6ea;
-}
-
-input, textarea, .file-upload-label, button {
-    margin-bottom: 10px;
 }
 
 .fixed-input-bar {
@@ -180,7 +177,13 @@ img {
     max-width: 80%;  /* Makes sure the image does not exceed the bubble width */
 }
 
-.container img {
-    display: block;  /* Ensures that images are block-level so they do not break the flow */
-    margin: 0 auto;  /* Centralizes the image within the container */
+.file-upload-wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.file-upload-label {
+    margin-bottom: 0;
+    margin-right: 10px; /* Add space between the button and the thumbnail */
 }
