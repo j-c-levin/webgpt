@@ -109,10 +109,6 @@ new Vue({
                         this.saveConversationHistory();
                         this.scrollToBottom();
                         this.apiTokenSaved = true;
-
-                        if (!this.apiTokenSaved()) {
-                            this.saveApiToken()
-                        }
                     }
                 })
                 .catch(error => {
