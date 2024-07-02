@@ -9,10 +9,11 @@
 <body>
 <div id="app">
     <div class="container">
+        <div v-if="errorMessage" class="error-banner">{{ errorMessage }}</div>
         <h1>GPT Chat Interface</h1>
+        <button class="clear-button" @click="clearLocalChat">🗑️</button>
         <label for="apiToken" v-if="!apiTokenSaved">Enter API Token:</label>
         <input type="text" id="apiToken" v-model="apiToken" @change="saveApiToken" placeholder="API Token" v-if="!apiTokenSaved">
-        <button class="clear-button" @click="clearLocalChat">🗑️</button>
         <div class="conversation" ref="conversation">
             <template v-for="(message, index) in conversationHistory">
                 <div :key="index" class="message" :class="{'user-message': message.role === 'user', 'assistant-message': message.role === 'assistant'}">
