@@ -94,8 +94,7 @@ new Vue({
         },
         sendRequest() {
             const messages = this.conversationHistory
-                .filter(msg => msg.role === 'user')
-                .map(msg => ({ role: msg.role, content: msg.content }));
+                .filter(msg => msg.loading !== true);
 
             fetch('https://api.openai.com/v1/chat/completions', {
                 method: 'POST',
