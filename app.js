@@ -46,7 +46,7 @@ new Vue({
                 let formData = new FormData();
                 formData.append("file", this.selectedImage);
 
-                fetch("https://tmpfiles.org/api/v1/uploadd", {
+                fetch("https://tmpfiles.org/api/v1/upload", {
                     method: "POST",
                     body: formData
                 })
